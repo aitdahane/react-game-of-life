@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CellModel } from '../model';
 import './Board.scss';
-import { resetCells, switchCellAlive, updateCells } from '../utils';
+import { resetCells, toggleCellIsAlive, updateCells } from '../utils';
 import Board from './Board';
 import Menu from './Menu';
 import Title from './Title';
@@ -9,7 +9,7 @@ import Title from './Title';
 const Game: React.FC<{ cells: CellModel[][] }> = (props) => {
   const [cells, setCells] = useState(props.cells);
   const [isOn, setIsOn] = useState(false);
-  const [displayBorders, setDisplayBoarder] = useState(true);
+  const [hasBorders, setHasBorders] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,11 +24,13 @@ const Game: React.FC<{ cells: CellModel[][] }> = (props) => {
     return () => clearInterval(interval);
   }, [isOn]);
 
+  const handleOnPlay = (_isOn: boolean) => () => setIsOn(_isOn);
+
   const handleOnSelectCell = (cell: CellModel) => {
     if (isOn) {
       setIsOn(false);
     } else {
-      setCells((_cells) => switchCellAlive(_cells, cell));
+      setCells((_cells) => toggleCellIsAlive(_cells, cell));
     }
   };
 
@@ -38,7 +40,7 @@ const Game: React.FC<{ cells: CellModel[][] }> = (props) => {
   };
 
   const handleOnDisplayGrid = () => {
-    setDisplayBoarder((_displayBorders) => !_displayBorders);
+    setHasBorders((_hasBorders) => !_hasBorders);
   };
 
   return (
@@ -47,16 +49,16 @@ const Game: React.FC<{ cells: CellModel[][] }> = (props) => {
 
       <Board
         cells={cells}
-        displayBorders={displayBorders}
+        hasBorders={hasBorders}
         onSelectCell={handleOnSelectCell}
       />
 
       <Menu
         isOn={isOn}
-        handleOnPlay={() => setIsOn(true)}
-        handleOnPause={() => setIsOn(false)}
-        handleOnReset={handleOnReset}
-        handleOnDisplayGrid={handleOnDisplayGrid}
+        onPlay={handleOnPlay(true)}
+        onPause={handleOnPlay(false)}
+        onReset={handleOnReset}
+        onDisplayGrid={handleOnDisplayGrid}
       />
     </>
   );

@@ -1,5 +1,5 @@
 import { CellModel } from '../model';
-import { range } from './ArrayUtils';
+import { compact, range } from './ArrayUtils';
 
 export const buildCells = (
   width: number,
@@ -29,8 +29,7 @@ export const updateCells = (cells: CellModel[][]): CellModel[][] => {
 };
 
 export const resetCells = (cells: CellModel[][]): CellModel[][] => {
-  const newCells = buildCells(cells[0].length, cells.length);
-  return newCells;
+  return buildCells(cells[0].length, cells.length);
 };
 
 const shouldLive = (cells: CellModel[][], cell: CellModel) => {
@@ -46,7 +45,7 @@ const shouldLive = (cells: CellModel[][], cell: CellModel) => {
 
 const getNeighborCells = (cells: CellModel[][], cell: CellModel) => {
   const { x, y } = cell;
-  return [
+  return compact([
     cells?.[y - 1]?.[x],
     cells?.[y - 1]?.[x - 1],
     cells?.[y - 1]?.[x + 1],
@@ -55,14 +54,13 @@ const getNeighborCells = (cells: CellModel[][], cell: CellModel) => {
     cells?.[y + 1]?.[x + 1],
     cells?.[y]?.[x + 1],
     cells?.[y]?.[x - 1],
-  ].filter((x) => !!x);
+  ]);
 };
 
-export const switchCellAlive = (
+export const toggleCellIsAlive = (
   cells: CellModel[][],
   cell: CellModel
 ): CellModel[][] => {
-  console.log(cell.isAlive);
   cells[cell.y][cell.x].isAlive = !cell.isAlive;
   return [...cells];
 };

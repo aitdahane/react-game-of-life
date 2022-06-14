@@ -6,8 +6,6 @@ import { buildCells } from './utils';
 
 function App() {
   const { width, height } = useWindowDimensions();
-  console.log('width', width);
-  console.log('height', height);
   const cells = buildCells(100, 80, []);
 
   return (
