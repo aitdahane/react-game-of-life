@@ -1,0 +1,15 @@
+@use '../styles/color.scss' as *;
+
+.Title {
+  position: absolute;
+  font-size: 4rem;
+  font-family: 'Minecraft';
+  top: 30%;
+  left: 34%;
+  margin: 0 auto;
+  font-weight: 200;
+  z-index: 0;
+  color: rgba(120, 120, 120, 0.6);
+  opacity: 0.5;
+  cursor: pointer;
+}

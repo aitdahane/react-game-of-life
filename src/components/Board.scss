@@ -1,0 +1,13 @@
+@use '../styles/color.scss' as *;
+
+.board {
+  background-color: $color-white;
+  width: 100vw;
+  height: 88vh;
+  z-index: 2;
+}
+
+.board-row {
+  display: flex;
+  width: 100%;
+}

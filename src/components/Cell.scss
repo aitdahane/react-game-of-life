@@ -1,0 +1,17 @@
+@use '../styles/color.scss' as *;
+
+.cell {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  z-index: 2;
+
+  &.is-alive {
+    background-color: $color-gray-xl;
+  }
+
+  &.has-border {
+    border: 1px solid $color-gray-m;
+  }
+}

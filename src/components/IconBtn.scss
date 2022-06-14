@@ -1,0 +1,20 @@
+@use '../styles/color.scss' as *;
+
+.IconBtn {
+  width: 4rem;
+  height: 4rem;
+  background-color: $color-white;
+  border: 1px solid $color-gray-xl;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-gray-xl;
+  font-weight: 800;
+
+  &:hover {
+    background-color: $color-gray-xl;
+    color: $color-gray-xs;
+    border: 1px solid $color-gray-xs;
+  }
+}

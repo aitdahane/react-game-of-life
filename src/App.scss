@@ -1,0 +1,23 @@
+@use './styles/color.scss' as *;
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  justify-content: center;
+  background-color: $color-white;
+  height: 10vh;
+  position: sticky;
+  top: 0;
+}
+
+.App-content {
+  width: 100vw;
+  height: 100vh;
+}
+
+.App-aside {
+  background-color: $color-gray-xl;
+  width: 20%;
+}
