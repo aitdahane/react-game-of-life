@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.scss';
 import Game from './components/Game';
-import useWindowDimensions from './hooks/useWindowDimensions';
+import { useWindowDimensions } from './hooks/useWindowDimensions';
 import { buildCells } from './utils';
 
 function App() {

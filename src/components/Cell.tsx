@@ -13,6 +13,7 @@ type CellProps = {
 const Cell: React.FC<CellProps> = ({ isAlive, onClick, hasBorder, width, height }) => {
   return (
     <span
+      data-testid='cell'
       className={classNames('Cell', { 'is-alive': isAlive, 'has-border': hasBorder })}
       style={{ width, height }}
       onClick={() => onClick()}
